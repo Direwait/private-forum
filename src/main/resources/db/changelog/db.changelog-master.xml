@@ -1,0 +1,22 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="001-createDatabase" author="you">
+        <sqlFile path="db/changelog/migrations/001-createDatabase.sql"
+                 splitStatements="true"
+                 endDelimiter=";"
+                 stripComments="true"
+                 encoding="UTF-8"/>
+    </changeSet>
+    <changeSet id="002-insertTariff" author="you">
+        <sqlFile path="db/changelog/migrations/002-insertTariff.sql"
+                 splitStatements="true"
+                 endDelimiter=";"
+                 stripComments="true"
+                 encoding="UTF-8"/>
+    </changeSet>
+</databaseChangeLog>

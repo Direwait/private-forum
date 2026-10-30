@@ -1,0 +1,38 @@
+spring:
+
+  profiles:
+    active: postgres
+
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+
+    hikari:
+      validation-timeout: 100000
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+      show-sql: false
+      format-sql: false
+      use_sql_comments: false
+      properties:
+        hibernate.dialect: org.hibernate.dialect.H2Dialect
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: true
+    drop-first: false
+
+
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}
+  refresh-expiration: ${REFRESH_EXPIRATION}
+
+spring.h2.console.enabled: true
+spring.h2.console.path: /h2-console

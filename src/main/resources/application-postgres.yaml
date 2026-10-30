@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/forum
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: ${POSTGRES_PASSWORD}
+
+    hikari:
+      validation-timeout: 100000
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+      show-sql: false
+      format-sql: false
+      use_sql_comments: false
+      properties:
+        hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master-postgres.xml
+    enabled: true
+    drop-first: false
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}
+  refresh-expiration: ${REFRESH_EXPIRATION}

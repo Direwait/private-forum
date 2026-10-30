@@ -1,0 +1,39 @@
+package org.alfa.database.model;
+
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import java.time.Instant;
+import java.util.UUID;
+
+@Entity
+@Builder
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "refresh_tokens")
+public class RefreshToken {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id")
+    private UUID id;
+
+    @Column(name = "token", unique = true, nullable = false, length = 500)
+    private String token;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private User user;
+
+    @Column(name = "expiry_date", nullable = false)
+    private Instant expiryDate;
+
+    @Column(name = "revoked")
+    private boolean revoked;
+}
+
